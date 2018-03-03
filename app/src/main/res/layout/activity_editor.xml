@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_margin"
+    tools:context=".EditorActivity">
+
+    <LinearLayout
+        android:id="@+id/container_measurement3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="@string/habit_title" />
+
+        <RelativeLayout style="@style/RelativeLayoutStyle">
+
+            <EditText
+                android:id="@+id/edit_habit_name"
+                style="@style/EditorFieldStyle"
+                android:hint="@string/must_have_value"
+                android:inputType="textCapWords" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="@string/do_time" />
+
+        <RelativeLayout style="@style/RelativeLayoutStyle">
+
+            <TextView
+                android:id="@+id/do_it_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/activity_margin" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/container_measurement2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="@string/begin_date" />
+
+        <RelativeLayout style="@style/RelativeLayoutStyle">
+
+            <TextView
+                android:id="@+id/begin_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/activity_margin" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
