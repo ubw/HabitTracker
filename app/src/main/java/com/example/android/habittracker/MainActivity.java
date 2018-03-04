@@ -7,15 +7,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.android.habittracker.data.HabitContract;
 import com.example.android.habittracker.data.HabitDBHelper;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private HabitDBHelper mDbHelper;
@@ -54,18 +50,22 @@ public class MainActivity extends AppCompatActivity {
 
     //更新
     private void updateDatebaseInfo() {
-        HabitDBHelper mDbHelper = new HabitDBHelper(this);
-
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
-        db.execSQL("update " + HabitContract.HabitEntry.TABLE_NAME + " set " + HabitContract.HabitEntry.COLUMN_HABIT_DONETIMES
-                + "=" + HabitContract.HabitEntry.COLUMN_HABIT_DONETIMES + "+1;");
+        db.execSQL(getString(R.string.update)
+                + " "
+                + HabitContract.HabitEntry.TABLE_NAME
+                + " "
+                + getString(R.string.set)
+                + " "
+                + HabitContract.HabitEntry.COLUMN_HABIT_DONETIMES
+                + getString(R.string.equal)
+                + HabitContract.HabitEntry.COLUMN_HABIT_DONETIMES
+                + getString(R.string.add1));
     }
 
     //读取
     private void displayDatabaseInfo() {
-        HabitDBHelper mDbHelper = new HabitDBHelper(this);
-
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
         String[] projection = {
@@ -87,12 +87,15 @@ public class MainActivity extends AppCompatActivity {
 
         TextView displayView = (TextView) findViewById(R.id.text_view_habit);
         try {
-            displayView.setText("Number of rows in pets database table: " + cursor.getCount() + "\n\n");
-            displayView.append(HabitContract.HabitEntry._ID + "-" +
-                    HabitContract.HabitEntry.COLUMN_HABIT_NAME + "-" +
-                    HabitContract.HabitEntry.COLUMN_HABIT_CREATEDATE + "-" +
-                    HabitContract.HabitEntry.COLUMN_HABIT_DOITTIME + "-" +
-                    HabitContract.HabitEntry.COLUMN_HABIT_DONETIMES + "\n");
+            displayView.setText(getString(R.string.titleSumHabits)
+                    + cursor.getCount()
+                    + getString(R.string.enter)
+                    + getString(R.string.enter));
+            displayView.append(HabitContract.HabitEntry._ID + getString(R.string.slash) +
+                    HabitContract.HabitEntry.COLUMN_HABIT_NAME + getString(R.string.slash) +
+                    HabitContract.HabitEntry.COLUMN_HABIT_CREATEDATE + getString(R.string.slash) +
+                    HabitContract.HabitEntry.COLUMN_HABIT_DOITTIME + getString(R.string.slash) +
+                    HabitContract.HabitEntry.COLUMN_HABIT_DONETIMES + getString(R.string.enter));
 
             int idColumnIndex = cursor.getColumnIndex(HabitContract.HabitEntry._ID);
             int nameColumnIndex = cursor.getColumnIndex(HabitContract.HabitEntry.COLUMN_HABIT_NAME);
@@ -107,11 +110,11 @@ public class MainActivity extends AppCompatActivity {
                 String currentCreateTime = cursor.getString(createtimeColumnIndex);
                 int currentDoneTimes = cursor.getInt(doneTimesColumnIndex);
 
-                displayView.append("\n" + currentId + "-" +
-                        currentName + "-" +
-                        currentAlarmTime + "-" +
-                        currentCreateTime + "-" +
-                        currentDoneTimes + "\n");
+                displayView.append(getString(R.string.enter) + currentId + getString(R.string.slash) +
+                        currentName + getString(R.string.slash) +
+                        currentAlarmTime + getString(R.string.slash) +
+                        currentCreateTime + getString(R.string.slash) +
+                        currentDoneTimes + getString(R.string.enter));
             }
 
         } finally {

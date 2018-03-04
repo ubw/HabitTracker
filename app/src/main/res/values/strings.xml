@@ -11,4 +11,11 @@
     <string name="action_save">Save</string>
     <string name="action_delete">Delete</string>
     <string name="sign_all">全部签到</string>
+    <string name="update">UPDATE</string>
+    <string name="set">SET</string>
+    <string name="equal">=</string>
+    <string name="add1">+1;</string>
+    <string name="enter">\n</string>
+    <string name="slash">-</string>
+    <string name="titleSumHabits">Number of rows in habits database table:&#160; </string>
 </resources>
