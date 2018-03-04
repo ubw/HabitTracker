@@ -17,18 +17,18 @@ import com.example.android.habittracker.data.HabitDBHelper;
 
 public class EditorActivity extends AppCompatActivity {
 
-    private EditText habit_name;
-    private TextView habit_begin_date;
-    private TextView habit_do_it_time;
+    private EditText mHabit_name;
+    private TextView mHabit_begin_date;
+    private TextView mHabit_do_it_time;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
-        habit_name = (EditText)findViewById(R.id.edit_habit_name);
+        mHabit_name = (EditText)findViewById(R.id.edit_habit_name);
         //设置日期
-        habit_begin_date = (TextView)findViewById(R.id.begin_date);
-        habit_begin_date.setOnClickListener(new View.OnClickListener() {
+        mHabit_begin_date = (TextView)findViewById(R.id.begin_date);
+        mHabit_begin_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerFragment dialog = new DatePickerFragment();
@@ -37,8 +37,8 @@ public class EditorActivity extends AppCompatActivity {
         });
 
         //设置习惯执行时间
-        habit_do_it_time = (TextView)findViewById(R.id.do_it_time);
-        habit_do_it_time.setOnClickListener(new View.OnClickListener() {
+        mHabit_do_it_time = (TextView)findViewById(R.id.do_it_time);
+        mHabit_do_it_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TimePickerFragment dialog2 = new TimePickerFragment();
@@ -57,9 +57,9 @@ public class EditorActivity extends AppCompatActivity {
 
     //插入语句
     private void insertHabit(){
-        String nameString = habit_name.getText().toString().trim();
-        String dateString = habit_begin_date.getText().toString().trim();
-        String timeString = habit_do_it_time.getText().toString().trim();
+        String nameString = mHabit_name.getText().toString().trim();
+        String dateString = mHabit_begin_date.getText().toString().trim();
+        String timeString = mHabit_do_it_time.getText().toString().trim();
 
         // Create database helper
         HabitDBHelper mDbHelper = new HabitDBHelper(this);
